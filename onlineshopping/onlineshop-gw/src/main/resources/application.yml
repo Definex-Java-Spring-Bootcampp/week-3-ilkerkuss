@@ -1,0 +1,16 @@
+server:
+  port: 5004
+spring:
+  application:
+    name: onlineshop-gw
+  cloud:
+    gateway:
+      routes:
+        - id: product-service
+          uri: lb://ONLINESHOPSERVICE
+          predicates:
+             - Path=/api/products/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:5005/eureka/
